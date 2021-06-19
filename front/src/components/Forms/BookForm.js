@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 
 const BookForm = (props) => {
 
+    const {
+        addedBooks,
+        books
+    } = props;
+
   const [book, setBook] = useState({
     title: props.book ? props.book.title : '',
     author: props.book ? props.book.author : ''
@@ -20,13 +25,10 @@ const BookForm = (props) => {
       return value !== '';
     });
 
-    function getRandomId(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-      }
 
     if (formFilled) {
       const book = {
-        id: getRandomId(1, 1000),
+        id: addedBooks.length + books.length + 1,
         title,
         author,
       };
@@ -57,7 +59,7 @@ const BookForm = (props) => {
                 type="text"
                 name="title"
                 value={title}
-                placeholder="Enter name of book"
+                placeholder="Title"
                 onChange={handleInputChange}
             />
             <label htmlFor="author">Book Author</label>
@@ -65,7 +67,7 @@ const BookForm = (props) => {
                 type="text"
                 name="author"
                 value={author}
-                placeholder="Enter name of author"
+                placeholder="Author"
                 onChange={handleInputChange}
             />
             <button type="submit">

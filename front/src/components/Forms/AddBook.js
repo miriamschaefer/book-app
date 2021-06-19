@@ -7,6 +7,7 @@ const AddBook = (props) => {
         history,
         setAddedBooks,
         addedBooks,
+        books
     } = props;
 
     const handleOnSubmit = (book) => {
@@ -17,7 +18,7 @@ const AddBook = (props) => {
 
   return (
     <React.Fragment>
-      <BookForm handleOnSubmit={handleOnSubmit} />
+      <BookForm handleOnSubmit={handleOnSubmit} addedBooks={addedBooks} books={books}/>
     </React.Fragment>
   );
 };

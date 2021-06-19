@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 
 const BookList = (props) => {
 
+    // const handleRemoveBook = (id) => {
+    //     setBooks(books.filter((book) => book.id !== id));
+    //   };
+
     const itemList =
         props.books.map((book, i) => {
             const {
