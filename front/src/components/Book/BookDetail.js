@@ -6,6 +6,7 @@ import BackLink from '../Layout/BackLink';
 
 const BookDetail = (props) => {
 
+
     const {
         title,
         author,
@@ -13,7 +14,7 @@ const BookDetail = (props) => {
         id
     } = props;
 
-    let matches = props.books.filter((book) => { return book.author === author && id !== book.id});
+    let matches = props.books.filter((book) => { return parseInt(book.author) === author && id !== parseInt(book.id) });
 
     const otherTitles =
      matches.map((book, i) => {
@@ -23,9 +24,7 @@ const BookDetail = (props) => {
                 <li >{book.title}</li>
             </Link>
         )
-    })
-
-     console.log(matches);
+    });
 
     return (
         <div>

@@ -8,12 +8,16 @@ import BookList from './Book/BookList';
 import BookDetail from './Book/BookDetail';
 import AuthorDetail from './Author/AuthorDetail';
 import Main from './Layout/Main';
+import useLocalStorage from './LocalStorage';
+import AddBook from './Forms/AddBook';
 
 
 function App() {
 
-  const [books, setBooks] = useState ([]);
+  const [books, setBooks] = useState([]);
   const [authors, setAuthors] = useState([]);
+  const [addedBooks, setAddedBooks] = useLocalStorage('addedBooks', []);
+
 
   useEffect(() => {
       setBooks(booksFromApi.books);
@@ -34,8 +38,6 @@ function App() {
           books={books}
         />
       )
-    } else {
-      return ("Error")
     }
   }
 
@@ -52,8 +54,6 @@ function App() {
           books={books}
         />
       )
-    } else {
-      return ("Error")
     }
   }
 
@@ -69,8 +69,13 @@ function App() {
               </Route>
 
               <Route exact path="/books">
-                <BookList books={books} />
+                <BookList books={books} addedBooks={addedBooks} />
               </Route>
+
+            <Route exact path="/addbook" render={(props) => (
+                <AddBook {...props} books={books} setAddedBooks={setAddedBooks} addedBooks={addedBooks} />
+              )}
+            />
 
               <Route exact path="/books/:id" component={renderBook}/>
 

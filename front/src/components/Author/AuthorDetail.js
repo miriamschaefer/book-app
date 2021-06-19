@@ -14,7 +14,7 @@ const AuthorDetail = (props) => {
     let matches = props.books.filter((book) => { return book.author === concName });
 
     const otherTitles =
-     matches.map((book, i) => {
+        matches.map((book, i) => {
 
         return (
             <Link to={`/books/${book.id}`} key={i}>
