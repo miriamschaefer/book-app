@@ -1,0 +1,82 @@
+{
+    "books": [
+      {
+        "id": 1,
+        "isbn": 246544341,
+        "title": "Normal People",
+        "author": "Sally Rooney"
+      },
+      {
+        "id": 2,
+        "isbn": 246544342,
+        "title": "The Girls",
+        "author": "Emma Cline"
+      },
+      {
+        "id": 3,
+        "isbn": 246544343,
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen"
+      },
+      {
+        "id": 4,
+        "isbn": 246544344,
+        "title": "High Fidelity",
+        "author": "Nick Hornby"
+      },
+      {
+        "id": 5,
+        "isbn": 246544345,
+        "title": "Malaherba",
+        "author": "Manuel Jabois"
+      },
+      {
+        "id": 6,
+        "isbn": 246544346,
+        "title": "Las Malas",
+        "author": "Camila Sosa Villada"
+      },
+      {
+        "id": 7,
+        "isbn": 246544347,
+        "title": "The Last Night of the Earth Poems",
+        "author": "Charles Bukowski"
+      },
+      {
+        "id": 8,
+        "isbn": 246544348,
+        "title": "Panza de Burro",
+        "author": "Andrea Abreu"
+      },
+      {
+        "id": 9,
+        "isbn": 246544349,
+        "title": "Los vencejos",
+        "author": "Fernando Aramburu"
+      },
+      {
+        "id": 10,
+        "isbn": 246544340,
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee"
+      },
+      {
+        "id": 11,
+        "isbn": 246544341,
+        "title": "Pulp",
+        "author": "Charles Bukowski"
+      },
+      {
+        "id": 12,
+        "isbn": 246544342,
+        "title": "Daddy",
+        "author": "Emma Cline"
+      },
+      {
+        "id": 13,
+        "isbn": 246544343,
+        "title": "Conversations with People",
+        "author": "Sally Rooney"
+      }
+    ]
+  }
