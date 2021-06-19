@@ -1,0 +1,14 @@
+//FONTS
+@font-face {
+  font-family: 'Roboto', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap')
+    format('truetype');
+}
+
+@import 'reset/reset';
+
+/* core */
+@import 'core/variables';
+@import 'core/mixins';
+
+@import 'design/main';
