@@ -14,15 +14,17 @@ import AddBook from './Forms/AddBook';
 
 function App() {
 
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useLocalStorage('books', []);
   const [authors, setAuthors] = useState([]);
   const [addedBooks, setAddedBooks] = useLocalStorage('addedBooks', []);
 
-
   useEffect(() => {
+
+    if(books.length === 0) {
       setBooks(booksFromApi.books);
+    }
       setAuthors(authorsFromApi.authors);
-  }, [books, authors]);
+  }, []);
 
   const renderBook = (props) => {
   const routeId = parseInt(props.match.params.id);
@@ -69,7 +71,7 @@ function App() {
               </Route>
 
               <Route exact path="/books">
-                <BookList books={books} addedBooks={addedBooks} />
+                <BookList books={books} addedBooks={addedBooks} setBooks={setBooks}/>
               </Route>
 
             <Route exact path="/addbook" render={(props) => (

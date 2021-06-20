@@ -1,16 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Book from './Book'
 
 
 
-const BookList = (props) => {
+const BookList = ({ books, setBooks, addedBooks }) => {
 
-    // const handleRemoveBook = (id) => {
-    //     setBooks(books.filter((book) => book.id !== id));
-    //   };
+    const handleRemove = (ev) => {
+        setBooks(books.filter((book) => parseInt(book.id) !== parseInt(ev.currentTarget.id)));
+        console.log(books)
+      };
 
     const itemList =
-        props.books.map((book, i) => {
+        books.map((book, i) => {
+
+            return (
+                <Book key={i} handleRemove={handleRemove} book={book} {...book} />
+            )
+        })
+
+        const addedByYouList =
+        addedBooks.map((book, i) => {
             const {
                 title,
                 id
@@ -29,6 +39,10 @@ const BookList = (props) => {
             <h1>Books</h1>
             <ul>
                 {itemList}
+            </ul>
+            <h1>Added by you</h1>
+            <ul>
+                {addedByYouList}
             </ul>
         </>
     )

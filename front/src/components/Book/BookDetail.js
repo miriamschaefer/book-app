@@ -6,12 +6,12 @@ import BackLink from '../Layout/BackLink';
 
 const BookDetail = (props) => {
 
-
     const {
         title,
         author,
         isbn,
-        id
+        id,
+        handleRemove
     } = props;
 
     let matches = props.books.filter((book) => { return parseInt(book.author) === author && id !== parseInt(book.id) });
@@ -20,9 +20,12 @@ const BookDetail = (props) => {
      matches.map((book, i) => {
 
         return (
-            <Link to={`/books/${id}`} key={i}>
-                <li >{book.title}</li>
-            </Link>
+            <>
+                <Link to={`/books/${id}`} key={i}>
+                    <li >{book.title}</li>
+                </Link>
+                <p onClick={handleRemove(id)}>X</p>
+            </>
         )
     });
 
