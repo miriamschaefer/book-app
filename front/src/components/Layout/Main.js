@@ -1,18 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Header from './Header';
 
 
 const Main = () => {
 
     return(
-        <ul>
-            <Link to="/authors">
-                <li>Authors</li>
-            </Link>
-            <Link to="/books">
-                <li>Books</li>
-            </Link>
-        </ul>
+
+        <main className="distributor">
+            <Header />
+            <ul className="distributor__list">
+                <Link to="/authors" className="distributor__list-elem">
+                    <li>Authors</li>
+                </Link>
+                <Link to="/books" className="distributor__list-elem">
+                    <li>Books</li>
+                </Link>
+            </ul>
+        </main>
     )
 }
 

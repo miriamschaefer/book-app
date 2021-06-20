@@ -1,3 +1,33 @@
 body {
   font-family: $font-main;
 }
+
+.distributor {
+  display: flex;
+  margin-top: 96px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__list {
+    display: flex;
+
+    &-elem {
+      margin-right: 24px;
+      font-size: 24px;
+      font-weight: 100;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.header {
+  text-align: center;
+
+  &__subtitle {
+    text-transform: uppercase;
+  }
+}

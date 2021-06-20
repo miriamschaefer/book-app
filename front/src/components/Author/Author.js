@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import close from '../../img/close.svg'
 
 const Author = (props) => {
 
@@ -10,12 +11,14 @@ const Author = (props) => {
     } = props;
 
     return (
-        <>
+        <li className="list__elements-item">
             <Link to={`/authors/${id}`} >
-                <li>{first_name} {last_name}</li>
+                <p className="list__elements-item-title">{first_name} {last_name}</p>
             </Link>
-            <p id={id} onClick={props.handleRemove}>X</p>
-        </>
+            <div id={id} onClick={props.handleRemove} className="list__elements-item-remove">
+                <img src={close} alt="Remove from list"/>
+            </div>
+        </li>
     )
 }
 

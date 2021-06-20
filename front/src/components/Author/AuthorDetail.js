@@ -28,7 +28,7 @@ const AuthorDetail = (props) => {
     const history = useHistory();
 
     return (
-        <div>
+        <main>
             <BackLink />
             {first_name}
             {last_name}
@@ -39,7 +39,7 @@ const AuthorDetail = (props) => {
             <div onClick={() => history.push(`/editauthor/${id}`)}>
                 Edit
             </div>
-        </div>
+        </main>
     )
 }
 

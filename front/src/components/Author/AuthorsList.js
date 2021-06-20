@@ -1,6 +1,8 @@
 import React from 'react';
 import BackLink from '../Layout/BackLink';
 import Author from './Author';
+import Header from '../Layout/Header';
+import { Link } from 'react-router-dom';
 
 const AuthorsList = ({ authors, setAuthors }) => {
 
@@ -8,8 +10,6 @@ const AuthorsList = ({ authors, setAuthors }) => {
         console.log(ev.currentTarget.id)
         setAuthors(authors.filter((author) => author.id !== ev.currentTarget.id));
     };
-
-    
 
         const itemList =
             authors.map((author, i) => {
@@ -19,14 +19,18 @@ const AuthorsList = ({ authors, setAuthors }) => {
         })
 
     return (
-        <>
+        <main className="list">
+            <Header />
             <BackLink />
-            <h1>Authors</h1>
+            <h2 className="list__title">Authors</h2>
+            <Link to="/addauthor" className="list__add">
+                Add more authors
+            </Link>
 
-            <ul>
+            <ul className="list__elements">
                 {itemList}
             </ul>
-        </>
+        </main>
     )
 }
 

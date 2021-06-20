@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { useHistory } from 'react-router-dom';
+import close from '../../img/close.svg'
+
 
 const Book = (props) => {
     const {
@@ -8,18 +9,15 @@ const Book = (props) => {
         title
     } = props;
 
-    // const history = useHistory();
-
     return (
-        <>
+        <li className="list__elements-item">
             <Link to={`/books/${id}`} >
-                <li>{title}</li>
+                <p className="list__elements-item-title">{title}</p>
             </Link>
-            <p id={id} onClick={props.handleRemove}>X</p>
-            {/* <div onClick={() => history.push(`/edit/${id}`)}>
-                Edit
-            </div> */}
-        </>
+            <div id={id} onClick={props.handleRemove} className="list__elements-item-remove">
+                <img src={close} alt="Remove from list"/>
+            </div>
+        </li>
     )
 }
 
