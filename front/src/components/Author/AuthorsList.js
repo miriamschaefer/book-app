@@ -1,22 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import BackLink from '../Layout/BackLink';
+import Author from './Author';
 
-const AuthorsList = (props) => {
+const AuthorsList = ({ authors, setAuthors }) => {
 
-    const itemList =
-        props.authors.map((author, i) => {
-            const {
-                last_name,
-                first_name,
-                id
-            } = author;
+    console.log(authors)
 
-            return (
-                <Link to={`/authors/${id}`} key={i}>
-                    <li >{first_name} {last_name}</li>
-                </Link>
-            )
+    const handleRemove = (ev) => {
+        setAuthors(authors.filter((author) => parseInt(author.id) !== parseInt(ev.currentTarget.id)));
+    };
+
+        const itemList =
+            authors.map((author, i) => {
+                return (
+                    <Author key={i} handleRemove={handleRemove} author={author} {...author} />
+                )
         })
 
     return (

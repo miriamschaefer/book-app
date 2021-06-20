@@ -1,5 +1,5 @@
 import '../stylesheets/App.scss';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import booksFromApi from '../data/books.json';
 import authorsFromApi from '../data/authors.json'
@@ -10,21 +10,20 @@ import AuthorDetail from './Author/AuthorDetail';
 import Main from './Layout/Main';
 import useLocalStorage from './LocalStorage';
 import AddBook from './Forms/AddBook';
+import EditBook from './Book/EditBook';
 
 
 function App() {
 
   const [books, setBooks] = useLocalStorage('books', []);
-  const [authors, setAuthors] = useState([]);
-  const [addedBooks, setAddedBooks] = useLocalStorage('addedBooks', []);
+  const [authors, setAuthors] = useLocalStorage('authors', []);
 
   useEffect(() => {
-
-    if(books.length === 0) {
+    if(books.length === 0 || authors.length === 0) {
       setBooks(booksFromApi.books);
-    }
       setAuthors(authorsFromApi.authors);
-  }, []);
+    }
+  });
 
   const renderBook = (props) => {
   const routeId = parseInt(props.match.params.id);
@@ -67,21 +66,31 @@ function App() {
               </Route>
 
               <Route exact path="/authors" >
-                <AuthorsList authors={authors}/>
+                <AuthorsList authors={authors} setAuthors={setAuthors}/>
               </Route>
 
               <Route exact path="/books">
-                <BookList books={books} addedBooks={addedBooks} setBooks={setBooks}/>
+                <BookList books={books} setBooks={setBooks}/>
               </Route>
 
             <Route exact path="/addbook" render={(props) => (
-                <AddBook {...props} books={books} setAddedBooks={setAddedBooks} addedBooks={addedBooks} />
+                <AddBook {...props} books={books} setBooks={setBooks} />
+              )}
+            />
+
+          <Route exact path="/addauthor" render={(props) => (
+                <AddBook {...props} authors={authors} setAuthors={setAuthors} />
               )}
             />
 
               <Route exact path="/books/:id" component={renderBook}/>
-
               <Route exact path="/authors/:id" component={renderAuthor}/>
+
+              <Route path="/edit/:id"
+                render={(props) => (
+                <EditBook {...props} books={books} setBooks={setBooks} />
+              )}/>
+
           </Switch>
     </div>
   );

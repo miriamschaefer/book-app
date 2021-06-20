@@ -1,43 +1,48 @@
 import React, { useState } from 'react';
 
 const BookForm = (props) => {
-
-    const {
-        addedBooks,
-        books
-    } = props;
+  const {
+    books
+  } = props;
 
   const [book, setBook] = useState({
-    title: props.book ? props.book.title : '',
-    author: props.book ? props.book.author : ''
+      title: props.book ? props.book.title : '',
+      author: props.book ? props.book.author : '',
+      isbn: props.book ? props.book.isbn : '',
   });
 
-  const [errorMsg, setErrorMsg] = useState('');
-  const { title, author } = book;
+  const [error, setError] = useState('');
+  const { title, author, isbn } = book;
 
-  const handleOnSubmit = (event) => {
-    event.preventDefault();
-    const values = [title, author];
-    let errorMsg = '';
+  const handleOnSubmit = (ev) => {
+    debugger;
+    ev.preventDefault();
 
-    const formFilled = values.every((field) => {
-      const value = `${field}`.trim();
-      return value !== '';
+    const values = [title, author, isbn];
+    let error = '';
+
+    const completedForm = values.every((field) => {
+      return field !== '';
     });
 
+  function getNewId(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
 
-    if (formFilled) {
+    if (completedForm) {
       const book = {
-        id: addedBooks.length + books.length + 1,
+        id: getNewId(1, 199),
         title,
         author,
+        isbn
       };
 
       props.handleOnSubmit(book);
+
     } else {
-      errorMsg = '* Rellena todos los campos';
+        error = '* Rellena todos los campos';
     }
-    setErrorMsg(errorMsg);
+      setError(error);
   };
 
   const handleInputChange = (ev) => {
@@ -49,31 +54,38 @@ const BookForm = (props) => {
     };
 
   return (
-    <div className="main-form">
+    <div className="">
 
-        {errorMsg && <p className="errorMsg">{errorMsg}</p>}
-
-        <form onSubmit={handleOnSubmit}>
-            <label htmlFor="title">Book Name</label>
-            <input
-                type="text"
-                name="title"
-                value={title}
-                placeholder="Title"
-                onChange={handleInputChange}
-            />
-            <label htmlFor="author">Book Author</label>
-            <input
-                type="text"
-                name="author"
-                value={author}
-                placeholder="Author"
-                onChange={handleInputChange}
-            />
+      <form onSubmit={handleOnSubmit}>
+        <label htmlFor="title">Book Name</label>
+          <input
+            type="text"
+            name="title"
+            value={title}
+            placeholder="Title"
+            onChange={handleInputChange}
+          />
+        <label htmlFor="author">Book Author</label>
+          <input
+            type="text"
+            name="author"
+            value={author}
+            placeholder="Author"
+            onChange={handleInputChange}
+          />
+        <label htmlFor="isbn">Book ISBN</label>
+          <input
+              type="text"
+              name="isbn"
+              value={isbn}
+              placeholder="ISBN"
+              onChange={handleInputChange}
+          />
             <button type="submit">
                 Submit
             </button>
         </form>
+        {error && <p className="">{error}</p>}
     </div>
   );
 };

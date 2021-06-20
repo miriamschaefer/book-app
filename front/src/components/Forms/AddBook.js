@@ -1,24 +1,38 @@
 import React from 'react';
 import BookForm from './BookForm';
+import AuthorForm from './AuthorForm';
 
 const AddBook = (props) => {
 
     const {
-        history,
-        setAddedBooks,
-        addedBooks,
-        books
+      history,
+      authors,
+      setAuthors,
+      setBooks,
+      books
     } = props;
 
-    const handleOnSubmit = (book) => {
-        setAddedBooks([book, ...addedBooks]);
+    const handleOnSubmit = (book, author) => {
+
+      if(history.location.pathname === "/addbook") {
+        setBooks([...books, book]);
         history.push('/books');
-        console.log(book)
+
+      } else if(history.location.pathname === "/addauthor") {
+
+        setAuthors([...authors, author]);
+        history.push('/authors');
       };
+    }
 
   return (
     <React.Fragment>
-      <BookForm handleOnSubmit={handleOnSubmit} addedBooks={addedBooks} books={books}/>
+      {history.location.pathname === '/addbook' &&
+      <BookForm handleOnSubmit={handleOnSubmit} books={books} history={history}/>
+      }
+      {history.location.pathname === '/addauthor' &&
+        <AuthorForm handleOnSubmit={handleOnSubmit} authors={authors} history={history}/>
+      }
     </React.Fragment>
   );
 };
