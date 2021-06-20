@@ -9,7 +9,7 @@ import BookDetail from './Book/BookDetail';
 import AuthorDetail from './Author/AuthorDetail';
 import Main from './Layout/Main';
 import useLocalStorage from './LocalStorage';
-import AddBook from './Forms/AddBook';
+import AddElement from './Forms/AddElement';
 import EditBook from './Book/EditBook';
 import EditAuthor from './Author/EditAuthor';
 
@@ -75,12 +75,12 @@ function App() {
               </Route>
 
             <Route exact path="/addbook" render={(props) => (
-                <AddBook {...props} books={books} setBooks={setBooks} />
+                <AddElement {...props} books={books} setBooks={setBooks} />
               )}
             />
 
           <Route exact path="/addauthor" render={(props) => (
-                <AddBook {...props} authors={authors} setAuthors={setAuthors} />
+                <AddElement {...props} authors={authors} setAuthors={setAuthors} />
               )}
             />
 

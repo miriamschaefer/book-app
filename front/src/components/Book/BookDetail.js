@@ -30,7 +30,7 @@ const BookDetail = (props) => {
                     <p className="detail__info-author">{author}</p>
                     <p className="detail__info-isbn">ISBN: {isbn}</p>
                 </section>
-                <div onClick={() => history.push(`/edit/${id}`)} className="detail__edit">
+                <div onClick={() => history.push(`/edit/${id}`)} className="detail__edit detail__edit--book">
                     Edit
                 </div>
             </main>

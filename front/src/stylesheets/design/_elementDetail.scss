@@ -50,8 +50,11 @@
     border: none;
     border-radius: 10px;
     text-align: center;
-    vertical-align: middle;
     line-height: 5px;
+
+    &--book {
+      line-height: 35px;
+    }
 
     &:hover {
       cursor: pointer;

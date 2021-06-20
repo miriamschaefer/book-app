@@ -2,7 +2,7 @@ import React from 'react';
 import BookForm from './BookForm';
 import AuthorForm from './AuthorForm';
 
-const AddBook = (props) => {
+const AddElement = (props) => {
 
     const {
       history,
@@ -34,4 +34,4 @@ const AddBook = (props) => {
   );
 };
 
-export default AddBook;
+export default AddElement;
