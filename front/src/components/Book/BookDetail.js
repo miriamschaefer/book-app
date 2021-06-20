@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import BackLink from '../Layout/BackLink';
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -15,6 +16,10 @@ const BookDetail = (props) => {
     } = props;
 
     let matches = props.books.filter((book) => { return parseInt(book.author) === author && id !== parseInt(book.id) });
+
+    const history = useHistory();
+
+    
 
     const otherTitles =
      matches.map((book, i) => {
@@ -36,6 +41,9 @@ const BookDetail = (props) => {
             {author}
             {isbn}
             <ul>{otherTitles}</ul>
+            <div onClick={() => history.push(`/edit/${id}`)}>
+                Edit
+            </div>
         </div>
     )
 }

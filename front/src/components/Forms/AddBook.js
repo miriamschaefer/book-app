@@ -11,18 +11,15 @@ const AddBook = (props) => {
       setBooks,
       books
     } = props;
-
-    const handleOnSubmit = (book, author) => {
-
-      if(history.location.pathname === "/addbook") {
+    
+    const handleOnSubmit = (book) => {
         setBooks([...books, book]);
         history.push('/books');
+    }
 
-      } else if(history.location.pathname === "/addauthor") {
-
-        setAuthors([...authors, author]);
-        history.push('/authors');
-      };
+    const handleSubmitAuthor = (author) => {
+      setAuthors([...authors, author]);
+      history.push('/authors');
     }
 
   return (
@@ -31,7 +28,7 @@ const AddBook = (props) => {
       <BookForm handleOnSubmit={handleOnSubmit} books={books} history={history}/>
       }
       {history.location.pathname === '/addauthor' &&
-        <AuthorForm handleOnSubmit={handleOnSubmit} authors={authors} history={history}/>
+        <AuthorForm handleSubmitAuthor={handleSubmitAuthor} authors={authors} history={history}/>
       }
     </React.Fragment>
   );

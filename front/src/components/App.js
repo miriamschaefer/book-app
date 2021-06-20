@@ -11,6 +11,7 @@ import Main from './Layout/Main';
 import useLocalStorage from './LocalStorage';
 import AddBook from './Forms/AddBook';
 import EditBook from './Book/EditBook';
+import EditAuthor from './Author/EditAuthor';
 
 
 function App() {
@@ -43,7 +44,7 @@ function App() {
   }
 
   const renderAuthor = (props) => {
-    const routeId = parseInt(props.match.params.id);
+    const routeId = props.match.params.id;
     const author = authors.find((author) => author.id === routeId);
 
     if(author) {
@@ -89,6 +90,11 @@ function App() {
               <Route path="/edit/:id"
                 render={(props) => (
                 <EditBook {...props} books={books} setBooks={setBooks} />
+              )}/>
+
+            <Route path="/editauthor/:id"
+                render={(props) => (
+                <EditAuthor {...props} authors={authors} setAuthors={setAuthors} />
               )}/>
 
           </Switch>

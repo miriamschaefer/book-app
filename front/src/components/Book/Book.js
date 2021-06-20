@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 const Book = (props) => {
-    
     const {
         id,
         title
     } = props;
 
-    const history = useHistory();
+    // const history = useHistory();
 
     return (
         <>
@@ -17,9 +16,9 @@ const Book = (props) => {
                 <li>{title}</li>
             </Link>
             <p id={id} onClick={props.handleRemove}>X</p>
-            <div onClick={() => history.push(`/edit/${id}`)}>
+            {/* <div onClick={() => history.push(`/edit/${id}`)}>
                 Edit
-            </div>
+            </div> */}
         </>
     )
 }

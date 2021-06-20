@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import BackLink from '../Layout/BackLink';
+import { useHistory } from 'react-router-dom';
 
 
 const AuthorDetail = (props) => {
@@ -8,6 +9,7 @@ const AuthorDetail = (props) => {
     const {
         last_name,
         first_name,
+        id
     } = props;
 
     const concName = first_name.concat(" " + last_name);
@@ -23,6 +25,8 @@ const AuthorDetail = (props) => {
         )
     })
 
+    const history = useHistory();
+
     return (
         <div>
             <BackLink />
@@ -32,6 +36,9 @@ const AuthorDetail = (props) => {
             <ul>
                 {otherTitles}
             </ul>
+            <div onClick={() => history.push(`/editauthor/${id}`)}>
+                Edit
+            </div>
         </div>
     )
 }

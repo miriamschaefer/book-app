@@ -4,11 +4,12 @@ import Author from './Author';
 
 const AuthorsList = ({ authors, setAuthors }) => {
 
-    console.log(authors)
-
     const handleRemove = (ev) => {
-        setAuthors(authors.filter((author) => parseInt(author.id) !== parseInt(ev.currentTarget.id)));
+        console.log(ev.currentTarget.id)
+        setAuthors(authors.filter((author) => author.id !== ev.currentTarget.id));
     };
+
+    
 
         const itemList =
             authors.map((author, i) => {

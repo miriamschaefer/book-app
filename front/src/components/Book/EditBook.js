@@ -5,17 +5,17 @@ import { useParams } from 'react-router-dom';
 const EditBook = ({ history, books, setBooks }) => {
 
     const { id } = useParams();
-    const bookToEdit = books.find((book) => book.id === id);
+
+    const bookToEdit = books.find((book) => parseInt(book.id) === parseInt(id));
 
     const handleOnSubmit = (book) => {
-        const filteredBooks = books.filter((book) => book.id !== id);
+        const filteredBooks = books.filter((book) => parseInt(book.id) !== parseInt(id));
         setBooks([book, ...filteredBooks]);
         history.push('/books');
   };
-
   return (
         <div>
-        <BookForm book={bookToEdit} handleOnSubmit={handleOnSubmit} />
+            <BookForm book={bookToEdit} handleOnSubmit={handleOnSubmit} />
         </div>
   );
 

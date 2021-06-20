@@ -1,31 +1,40 @@
 import React, { useState }from 'react';
 
 const AuthorForm = (props) => {
-    const {
-        authors
-    } = props;
-
+  
     const [author, setAuthor] = useState({
         first_name: props.author ? props.author.first_name : '',
         last_name: props.author ? props.author.last_name : ''
     });
 
+    const [error, setError] = useState('');
     const { first_name, last_name} = author;
 
-    const handleOnSubmit = (ev) => {
+    const handleSubmitAuthor = (ev) => {
         ev.preventDefault();
 
-        // const values = [first_name, last_name];
+        const values = [first_name, last_name];
+        let error = '';
 
-        const newId = authors[authors.length - 1].id + 1;
+        const completedForm = values.every((field) => {
+            return field !== '';
+          });
 
-        const author = {
-            id: newId,
-            first_name,
-            last_name
+          var idLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+          var newId = idLetter + Date.now();
+
+       if (completedForm){
+            const author = {
+                id: newId,
+                first_name,
+                last_name
         };
+        props.handleSubmitAuthor(author)
 
-        props.handleOnSubmit(author)
+    } else {
+        error = '* Rellena todos los campos';
+    }
+        setError(error);
     }
 
     const handleInputChange = (ev) => {
@@ -40,7 +49,7 @@ const AuthorForm = (props) => {
     return(
         <div className="">
 
-        <form onSubmit={handleOnSubmit}>
+        <form onSubmit={handleSubmitAuthor}>
             <label htmlFor="first_name">Name</label>
             <input
                 type="text"
@@ -61,6 +70,7 @@ const AuthorForm = (props) => {
                     Submit
                 </button>
             </form>
+            {error && <p className="">{error}</p>}
     </div>
     )
 

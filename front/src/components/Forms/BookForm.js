@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 
 const BookForm = (props) => {
-  const {
-    books
-  } = props;
 
   const [book, setBook] = useState({
       title: props.book ? props.book.title : '',
@@ -15,7 +12,6 @@ const BookForm = (props) => {
   const { title, author, isbn } = book;
 
   const handleOnSubmit = (ev) => {
-    debugger;
     ev.preventDefault();
 
     const values = [title, author, isbn];
