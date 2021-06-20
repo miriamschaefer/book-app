@@ -24,8 +24,8 @@ const BookList = ({ books, setBooks }) => {
             <main className="list">
 
             <h2 className="list__title">Books</h2>
-
             <p className="list__subtitle">Click on the names to check details or just remove them by clicking the icon.</p>
+            
             <div className="list__navigation">
                 <BackLink />
                 <Link to="/addbook" className="list__navigation-add">

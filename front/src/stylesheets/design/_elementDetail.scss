@@ -1,0 +1,65 @@
+.detail {
+  margin: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+
+  &__info {
+    display: flex;
+    margin: 0 auto;
+    text-transform: uppercase;
+    color: $color-accent;
+    font-size: 32px;
+
+    & p {
+      margin-right: 12px;
+    }
+
+    &-isbn,
+    &-author {
+      color: $color-dark;
+      text-transform: initial;
+      font-size: 18px;
+    }
+
+    &--author {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    & span {
+      display: inline;
+    }
+  }
+
+  &__books {
+    margin: 0 auto;
+
+    &-title {
+      font-weight: 500;
+      font-size: 21px;
+    }
+  }
+
+  &__edit {
+    margin: 0 auto;
+    background-color: $color-accent;
+    color: $color-light;
+    height: 35px;
+    width: 100px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 5px;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.85;
+    }
+
+    & p {
+      display: block;
+    }
+  }
+}

@@ -19,18 +19,24 @@ const AuthorsList = ({ authors, setAuthors }) => {
         })
 
     return (
-        <main className="list">
+        <>
             <Header />
-            <BackLink />
-            <h2 className="list__title">Authors</h2>
-            <Link to="/addauthor" className="list__add">
-                Add more authors
-            </Link>
+            <main className="list">
+                
+                <h2 className="list__title">Authors</h2>
+                <p className="list__subtitle">Click on the names to check details or just remove them by clicking the icon.</p>
 
-            <ul className="list__elements">
-                {itemList}
-            </ul>
-        </main>
+                <div className="list__navigation">
+                    <BackLink />
+                    <Link to="/addauthor" className="list__navigation-add">
+                        Add more authors
+                    </Link>
+                </div>
+                <ul className="list__elements">
+                    {itemList}
+                </ul>
+            </main>
+        </>
     )
 }
 

@@ -22,12 +22,17 @@
     margin-top: 42px;
     display: flex;
     justify-content: space-between;
-    width: 800px;
+    width: 400px;
     text-transform: uppercase;
+
+    @include media($desktop) {
+      width: 800px;
+    }
 
     &-add {
       &:hover {
         text-decoration: underline;
+        color: $color-accent;
       }
     }
 
@@ -44,6 +49,7 @@
 
       &:hover {
         text-decoration: underline;
+        color: $color-accent;
       }
     }
   }
@@ -58,6 +64,9 @@
 
       &-title {
         margin-right: 12px;
+        &:hover {
+          color: $color-accent;
+        }
       }
 
       &-remove {
@@ -65,6 +74,7 @@
         height: 12px;
         &:hover {
           cursor: pointer;
+          transform: rotate(15deg);
         }
 
         & img {

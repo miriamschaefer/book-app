@@ -1,4 +1,6 @@
 import React, { useState }from 'react';
+import Header from '../Layout/Header';
+import BackLink from '../Layout/BackLink';
 
 const AuthorForm = (props) => {
   
@@ -47,31 +49,41 @@ const AuthorForm = (props) => {
 
 
     return(
-        <div className="">
+        <>
+        <Header />
+        <main className="form">
+          <BackLink />
 
-        <form onSubmit={handleSubmitAuthor}>
-            <label htmlFor="first_name">Name</label>
-            <input
-                type="text"
-                name="first_name"
-                value={first_name}
-                placeholder="Name"
-                onChange={handleInputChange}
-            />
-            <label htmlFor="last_name">Last Name</label>
-            <input
-                type="text"
-                name="last_name"
-                value={last_name}
-                placeholder="Last Name"
-                onChange={handleInputChange}
-            />
-                <button type="submit">
+        <form onSubmit={handleSubmitAuthor} className="form__elements">
+            <div className="form__elements-group">
+                <label htmlFor="first_name">Name</label>
+                <input
+                    type="text"
+                    name="first_name"
+                    value={first_name}
+                    className="form__elements-group-input"
+                    placeholder="Name"
+                    onChange={handleInputChange}
+                />
+            </div>
+            <div className="form__elements-group">
+                <label htmlFor="last_name">Last Name</label>
+                <input
+                    type="text"
+                    name="last_name"
+                    value={last_name}
+                    placeholder="Last Name"
+                    className="form__elements-group-input"
+                    onChange={handleInputChange}
+                />
+            </div>
+                <button type="submit" className="form__elements-btn">
                     Submit
                 </button>
             </form>
             {error && <p className="">{error}</p>}
-    </div>
+        </main>
+    </>
     )
 
 };

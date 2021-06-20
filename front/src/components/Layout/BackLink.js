@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const BackLink = () => {
     
     return (
-        <Link to="/" className="list__navigation-back">Back</Link>
+        <Link to="/" className="list__navigation-back list__navigation-back--form">Back</Link>
     )
 }
 

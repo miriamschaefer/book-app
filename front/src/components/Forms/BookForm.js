@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Header from '../Layout/Header';
+import BackLink from '../Layout/BackLink';
 
 const BookForm = (props) => {
 
@@ -50,39 +52,53 @@ const BookForm = (props) => {
     };
 
   return (
-    <div className="">
 
-      <form onSubmit={handleOnSubmit}>
-        <label htmlFor="title">Book Name</label>
-          <input
-            type="text"
-            name="title"
-            value={title}
-            placeholder="Title"
-            onChange={handleInputChange}
-          />
-        <label htmlFor="author">Book Author</label>
-          <input
-            type="text"
-            name="author"
-            value={author}
-            placeholder="Author"
-            onChange={handleInputChange}
-          />
-        <label htmlFor="isbn">Book ISBN</label>
-          <input
+    <>
+    <Header />
+    <main className="form">
+      <BackLink />
+
+      <form className="form__elements" onSubmit={handleOnSubmit}>
+        <div className="form__elements-group">
+          <label htmlFor="title" >Book Name</label>
+            <input
               type="text"
-              name="isbn"
-              value={isbn}
-              placeholder="ISBN"
+              name="title"
+              className="form__elements-group-input"
+              value={title}
+              placeholder="Title"
               onChange={handleInputChange}
-          />
-            <button type="submit">
+            />
+          </div>
+          <div className="form__elements-group">
+              <label htmlFor="author">Book Author</label>
+              <input
+                type="text"
+                className="form__elements-group-input"
+                name="author"
+                value={author}
+                placeholder="Author"
+                onChange={handleInputChange}
+              />
+          </div>
+          <div className="form__elements-group">
+            <label htmlFor="isbn">Book ISBN</label>
+              <input
+                  className="form__elements-group-input"
+                  type="text"
+                  name="isbn"
+                  value={isbn}
+                  placeholder="ISBN"
+                  onChange={handleInputChange}
+              />
+            </div>
+            <button className="form__elements-btn" type="submit">
                 Submit
             </button>
         </form>
-        {error && <p className="">{error}</p>}
-    </div>
+        {error && <p className="form__error">{error}</p>}
+    </main>
+  </>
   );
 };
 

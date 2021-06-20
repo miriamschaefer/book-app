@@ -27,6 +27,10 @@ body {
 .header {
   text-align: center;
 
+  &__title {
+    color: $color-accent;
+  }
+
   &__subtitle {
     text-transform: uppercase;
   }
